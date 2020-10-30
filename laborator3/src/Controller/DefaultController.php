@@ -11,15 +11,15 @@ use Psr\Log\LoggerInterface;
 class DefaultController extends AbstractController
 {
 /**
-      * @Route("/{name}")
+      * @Route("/hello/{name}")
       */
      public function index($name, LoggerInterface $logger, GreetingGenerator $generator)
     {
     	  $greeting = $generator->getRandomGreeting();
 
-    $logger->info("Saying $greeting to $name!");
+   $info = "Saying $greeting to $name!";
 
-        return $this->render('default/index.html.twig', ['name' => $name,]);
+        return $this->render('default/index.html.twig', ['name' => $name, 'greeting' => $info,]);
     }
 
 /**
